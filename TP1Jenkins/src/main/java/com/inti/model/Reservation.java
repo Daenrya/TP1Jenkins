@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +25,13 @@ public class Reservation {
 	private LocalDate dateReservation;
 	private int nbJours;
 	
+	@ManyToOne
+	@JoinColumn(name="idH")
+	private Hotel hotel;
+	
+	@ManyToOne
+	@JoinColumn(name="idV")
+	private Voyageur voyageur;
 	
 	public Reservation(LocalDate dateReservation, int nbJours) {
 		super();
